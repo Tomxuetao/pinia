@@ -1,5 +1,10 @@
 # Introduction
 
+<VueSchoolLink
+  href="https://vueschool.io/lessons/introduction-to-pinia"
+  title="Get started with Pinia"
+/>
+
 Pinia [started](https://github.com/vuejs/pinia/commit/06aeef54e2cad66696063c62829dac74e15fd19e) as an experiment to redesign what a Store for Vue could look like with the [Composition API](https://github.com/vuejs/composition-api) around November 2019. Since then, the initial principles are still the same, but Pinia works for both Vue 2 and Vue 3 **and doesn't require you to use the composition API**. The API is the same for both except for _installation_ and _SSR_, and these docs are targeted to Vue 3 **with notes about Vue 2** whenever necessary so it can be read by Vue 2 and Vue 3 users!
 
 ## Why should I use Pinia?
@@ -109,7 +114,7 @@ You will find more information about each _map helper_ in the core concepts.
 
 ## Why _Pinia_
 
-Pinia (pronounced like `/peenya/` in English) is the closest word to _piña_ (_pineapple_ in Spanish) that is a valid package name. A pineapple is in reality a group of individual flowers that join together to create a multiple fruit. Similar to stores, each one is born individually, but they are all connected at the end. It's also a delicious tropical fruit indigenous to South America.
+Pinia (pronounced `/piːnjʌ/`, like "peenya" in English) is the closest word to _piña_ (_pineapple_ in Spanish) that is a valid package name. A pineapple is in reality a group of individual flowers that join together to create a multiple fruit. Similar to stores, each one is born individually, but they are all connected at the end. It's also a delicious tropical fruit indigenous to South America.
 
 ## A more realistic example
 
@@ -160,7 +165,9 @@ export const todos = defineStore('todos', {
 
 ## Comparison with Vuex
 
-Pinia tries to stay as close to Vuex's philosophy as possible. It was designed to test out a proposal for the next iteration of Vuex and it was a success as we currently have an open RFC for Vuex 5 with [an API very similar](https://github.com/vuejs/rfcs/discussions/270) to the one used by Pinia. Note that I (Eduardo), the author of Pinia, am part of the Vue.js Core Team and actively participate in the design of APIs like the Router and Vuex. My personal intention with this project is to redesign the experience of using a global Store while keeping the approachable philosophy of Vue. I keep the API of Pinia as close as Vuex as it keeps moving forward to make it easy for people to migrate to Vuex or to even fusion both projects (under Vuex) in the future.
+Pinia started out as an exploration of what the next iteration of Vuex could look like, incorporating many ideas from core team discussions for Vuex 5. Eventually, we realized that Pinia already implements most of what we wanted in Vuex 5, and decided to make it the new recommendation instead.
+
+Compared to Vuex, Pinia provides a simpler API with less ceremony, offers Composition-API-style APIs, and most importantly, has solid type inference support when used with TypeScript.
 
 ### RFCs
 

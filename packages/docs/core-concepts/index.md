@@ -1,5 +1,10 @@
 # Defining a Store
 
+<VueSchoolLink
+  href="https://vueschool.io/lessons/define-your-first-pinia-store"
+  title="Learn how to define and use stores in Pinia"
+/>
+
 Before diving into core concepts, we need to know that a store is defined using `defineStore()` and that it requires a **unique** name, passed as the first argument:
 
 ```js
@@ -64,7 +69,8 @@ export default defineComponent({
 })
 ```
 
-In order to extract properties from the store while keeping its reactivity, you need to use `storeToRefs()`. It will create refs for any reactive property. This is useful when you are only using state from the store but not calling any action:
+In order to extract properties from the store while keeping its reactivity, you need to use `storeToRefs()`. It will create refs for every reactive property. This is useful when you are only using state from the store but not calling any action. Note you can destructure actions directly from the store as they are bound to the store itself too:
+
 ```js
 import { storeToRefs } from 'pinia'
 
@@ -75,10 +81,13 @@ export default defineComponent({
     // This will also create refs for properties added by plugins
     // but skip any action or non reactive (non ref/reactive) property
     const { name, doubleCount } = storeToRefs(store)
+    // the increment action can be just extracted
+    const { increment } = store
 
     return {
       name,
       doubleCount
+      increment,
     }
   },
 })
