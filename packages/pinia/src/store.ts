@@ -84,6 +84,13 @@ const skipHydrateSymbol = __DEV__
   : /* istanbul ignore next */ Symbol()
 const skipHydrateMap = /*#__PURE__*/ new WeakMap<any, any>()
 
+/**
+ * Tells Pinia to skip the hydration process of a given object. This is useful in setup stores (only) when you return a
+ * stateful object in the store but it isn't really state. e.g. returning a router instance in a setup store.
+ *
+ * @param obj - target object
+ * @returns obj
+ */
 export function skipHydrate<T = any>(obj: T): T {
   return isVue2
     ? // in @vue/composition-api, the refs are sealed so defineProperty doesn't work...
@@ -163,7 +170,7 @@ function createOptionsStore<
     )
   }
 
-  store = createSetupStore(id, setup, options, pinia, hot)
+  store = createSetupStore(id, setup, options, pinia, hot, true)
 
   store.$reset = function $reset() {
     const newState = state ? state() : {}
@@ -189,10 +196,10 @@ function createSetupStore<
     | DefineSetupStoreOptions<Id, S, G, A>
     | DefineStoreOptions<Id, S, G, A> = {},
   pinia: Pinia,
-  hot?: boolean
+  hot?: boolean,
+  isOptionsStore?: boolean
 ): Store<Id, S, G, A> {
   let scope!: EffectScope
-  const buildState = (options as DefineStoreOptions<Id, S, G, A>).state
 
   const optionsForPlugin: DefineStoreOptionsInPlugin<Id, S, G, A> = assign(
     { actions: {} as A },
@@ -239,9 +246,9 @@ function createSetupStore<
   let debuggerEvents: DebuggerEvent[] | DebuggerEvent
   const initialState = pinia.state.value[$id] as UnwrapRef<S> | undefined
 
-  // avoid setting the state for option stores are it is set
+  // avoid setting the state for option stores if it is set
   // by the setup
-  if (!buildState && !initialState && (!__DEV__ || !hot)) {
+  if (!isOptionsStore && !initialState && (!__DEV__ || !hot)) {
     /* istanbul ignore if */
     if (isVue2) {
       set(pinia.state.value, $id, {})
@@ -304,7 +311,7 @@ function createSetupStore<
   const $reset = __DEV__
     ? () => {
         throw new Error(
-          `🍍: Store "${$id}" is build using the setup syntax and does not implement $reset().`
+          `🍍: Store "${$id}" is built using the setup syntax and does not implement $reset().`
         )
       }
     : noop
@@ -459,7 +466,7 @@ function createSetupStore<
         set(hotState.value, key, toRef(setupStore as any, key))
         // createOptionStore directly sets the state in pinia.state.value so we
         // can just skip that
-      } else if (!buildState) {
+      } else if (!isOptionsStore) {
         // in setup stores we must hydrate the state and sync pinia state tree with the refs the user just created
         if (initialState && shouldHydrate(prop)) {
           if (isRef(prop)) {
@@ -507,7 +514,7 @@ function createSetupStore<
     } else if (__DEV__) {
       // add getters for devtools
       if (isComputed(prop)) {
-        _hmrPayload.getters[key] = buildState
+        _hmrPayload.getters[key] = isOptionsStore
           ? // @ts-expect-error
             options.getters[key]
           : prop
@@ -605,7 +612,7 @@ function createSetupStore<
       // TODO: does this work in both setup and option store?
       for (const getterName in newStore._hmrPayload.getters) {
         const getter: _Method = newStore._hmrPayload.getters[getterName]
-        const getterValue = buildState
+        const getterValue = isOptionsStore
           ? // special handling of options api
             computed(() => {
               setActivePinia(pinia)
@@ -710,7 +717,7 @@ function createSetupStore<
   // only apply hydrate to option stores with an initial state in pinia
   if (
     initialState &&
-    buildState &&
+    isOptionsStore &&
     (options as DefineStoreOptions<Id, S, G, A>).hydrate
   ) {
     ;(options as DefineStoreOptions<Id, S, G, A>).hydrate!(
@@ -723,11 +730,6 @@ function createSetupStore<
   isSyncListening = true
   return store
 }
-
-// export function disposeStore(store: StoreGeneric) {
-//   store._e
-
-// }
 
 /**
  * Extract the actions of a store type. Works with both a Setup Store or an
