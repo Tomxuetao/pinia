@@ -24,7 +24,7 @@ const useStore = defineStore('storeId', {
 ```
 
 :::tip
-If you are using Vue 2, the data you create in `state` follows the same rules as the `data` in a Vue instance, ie the state object must be plain and you need to call `Vue.set()` when **adding new** properties to it. **See also: [Vue#data](https://vuejs.org/v2/api/#data)**.
+If you are using Vue 2, the data you create in `state` follows the same rules as the `data` in a Vue instance, ie the state object must be plain and you need to call `Vue.set()` when **adding new** properties to it. **See also: [Vue#data](https://v2.vuejs.org/v2/api/#data)**.
 :::
 
 ## Accessing the `state`
@@ -60,7 +60,7 @@ For the following examples, you can assume the following store was created:
 // Example File Path:
 // ./src/stores/counterStore.js
 
-import { defineStore } from 'pinia',
+import { defineStore } from 'pinia'
 
 const useCounterStore = defineStore('counterStore', {
   state: () => ({
@@ -68,29 +68,6 @@ const useCounterStore = defineStore('counterStore', {
   })
 })
 ```
-
-### With `setup()`
-
-While Composition API is not for everyone, the `setup()` hook can make using Pinia easier to work with in the Options API. No extra map helper functions needed!
-
-```js
-import { useCounterStore } from '../stores/counterStore'
-
-export default {
-  setup() {
-    const counterStore = useCounterStore()
-
-    return { counterStore }
-  },
-  computed: {
-    tripleCounter() {
-      return this.counterStore.counter * 3
-    },
-  },
-}
-```
-
-### Without `setup()`
 
 If you are not using the Composition API, and you are using `computed`, `methods`, ..., you can use the `mapState()` helper to map state properties as readonly computed properties:
 
