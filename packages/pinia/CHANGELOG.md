@@ -1,3 +1,48 @@
+## [2.0.21](https://github.com/vuejs/pinia/compare/pinia@2.0.20...pinia@2.0.21) (2022-08-26)
+
+### Bug Fixes
+
+- **build:** remove problematic browser export ([6efa780](https://github.com/vuejs/pinia/commit/6efa780f2c6e401e1d82a80a2aeceeac962f1c4e)), closes [#1593](https://github.com/vuejs/pinia/issues/1593)
+
+## [2.0.20](https://github.com/vuejs/pinia/compare/pinia@2.0.19...pinia@2.0.20) (2022-08-19)
+
+- **build**: support vue 2 devtools flag
+
+## [2.0.19](https://github.com/vuejs/pinia/compare/pinia@2.0.18...pinia@2.0.19) (2022-08-18)
+
+### Bug Fixes
+
+- **devtools:** use flag to include devtools ([4e92c36](https://github.com/vuejs/pinia/commit/4e92c360a4b4b8a39b2e3c284f31560120742b6f))
+
+## [2.0.18](https://github.com/vuejs/pinia/compare/pinia@2.0.17...pinia@2.0.18) (2022-08-10)
+
+### Bug Fixes
+
+- **ie:** completely skip devtools in dev for IE ([ca73db9](https://github.com/vuejs/pinia/commit/ca73db964b56205d43aa798e10d5c5bb5c4ea847)), closes [#1440](https://github.com/vuejs/pinia/issues/1440)
+
+## [2.0.17](https://github.com/vuejs/pinia/compare/pinia@2.0.16...pinia@2.0.17) (2022-07-25)
+
+### Bug Fixes
+
+- **devtools:** state formatting ([b01f5c2](https://github.com/vuejs/pinia/commit/b01f5c2a5cb62cfd3e0df9da5570925f3a6f077a)), closes [#1358](https://github.com/vuejs/pinia/issues/1358)
+- setupStore getter types ([#1430](https://github.com/vuejs/pinia/issues/1430)) ([#1444](https://github.com/vuejs/pinia/issues/1444)) ([6be93f2](https://github.com/vuejs/pinia/commit/6be93f2301a7711873f49c94999913947e3896b8))
+
+### Features
+
+- **devtools:** allow resetting fromp pinia inspector ([cee0e16](https://github.com/vuejs/pinia/commit/cee0e16e0ea343f97fa6b96f80ff32380637110b))
+
+## [2.0.16](https://github.com/vuejs/pinia/compare/pinia@2.0.15...pinia@2.0.16) (2022-07-12)
+
+### Bug Fixes
+
+- add missing require in exports ([96c0dbc](https://github.com/vuejs/pinia/commit/96c0dbc66ee166e6bd11be60c8486f239d83af40))
+
+## [2.0.15](https://github.com/vuejs/pinia/compare/pinia@2.0.14...pinia@2.0.15) (2022-07-11)
+
+### Features
+
+- warn when a getter conflicts with the state ([#1356](https://github.com/vuejs/pinia/issues/1356)) ([667b81d](https://github.com/vuejs/pinia/commit/667b81dfd7888bbae562bbd02c3670d4c664a8e2))
+
 ## [2.0.14](https://github.com/vuejs/pinia/compare/pinia@2.0.13...pinia@2.0.14) (2022-05-05)
 
 ### Bug Fixes

@@ -1,4 +1,4 @@
-import {
+import type {
   ComputedRef,
   DebuggerEvent,
   Ref,
@@ -28,7 +28,7 @@ export function isPlainObject(
 }
 
 /**
- * Recursive `Partial<T>`. Used by {@link Store.$patch}.
+ * Recursive `Partial<T>`. Used by {@link Store['$patch']}.
  *
  * For internal use **only**
  */
@@ -208,7 +208,7 @@ export interface _StoreOnActionListenerContext<
 
   /**
    * Sets up a hook if the action fails. Return `false` to catch the error and
-   * stop it fro propagating.
+   * stop it from propagating.
    */
   onError: (callback: (error: unknown) => void) => void
 }
@@ -601,7 +601,7 @@ export type _ExtractActionsFromSetupStore<SS> = SS extends undefined | void
 export type _ExtractGettersFromSetupStore<SS> = SS extends undefined | void
   ? {}
   : _ExtractGettersFromSetupStore_Keys<SS> extends keyof SS
-  ? _UnwrapAll<Pick<SS, _ExtractGettersFromSetupStore_Keys<SS>>>
+  ? Pick<SS, _ExtractGettersFromSetupStore_Keys<SS>>
   : never
 
 /**
