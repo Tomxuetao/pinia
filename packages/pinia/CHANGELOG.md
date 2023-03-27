@@ -1,3 +1,69 @@
+## [2.0.33](https://github.com/vuejs/pinia/compare/pinia@2.0.32...pinia@2.0.33) (2023-03-06)
+
+### Bug Fixes
+
+- allow `$reset` to be overridden by plugins ([#2054](https://github.com/vuejs/pinia/issues/2054)) ([709e2b1](https://github.com/vuejs/pinia/commit/709e2b1a77410331ee1ce88212ac55a4e92fa941))
+
+## [2.0.32](https://github.com/vuejs/pinia/compare/pinia@2.0.31...pinia@2.0.32) (2023-02-21)
+
+### Bug Fixes
+
+- **types:** mapWritableState array ([a7ad90d](https://github.com/vuejs/pinia/commit/a7ad90d319c4fad29f40622a6b95e605c47377f9)), closes [#2014](https://github.com/vuejs/pinia/issues/2014)
+
+## [2.0.31](https://github.com/vuejs/pinia/compare/pinia@2.0.30...pinia@2.0.31) (2023-02-20)
+
+### Bug Fixes
+
+- **types:** mapWritableState array ([07eaf99](https://github.com/vuejs/pinia/commit/07eaf99a566ef5de4173b782504a163bd276e12e)), closes [#2014](https://github.com/vuejs/pinia/issues/2014)
+
+## [2.0.30](https://github.com/vuejs/pinia/compare/pinia@2.0.29...pinia@2.0.30) (2023-02-01)
+
+### Bug Fixes
+
+- avoid spread operator even in devtools code ([d2a4def](https://github.com/vuejs/pinia/commit/d2a4defc381ae8e023b45b05e4ac8588fe2add9e)), closes [#1885](https://github.com/vuejs/pinia/issues/1885)
+
+## [2.0.29](https://github.com/vuejs/pinia/compare/pinia@2.0.28...pinia@2.0.29) (2023-01-15)
+
+### Bug Fixes
+
+- **types:** type storeToRefs getters as ComputedRef ([#1898](https://github.com/vuejs/pinia/issues/1898)) ([dcf7ef0](https://github.com/vuejs/pinia/commit/dcf7ef0d3a6773da97c5cdde4b9a958492a15d7d))
+
+## [2.0.28](https://github.com/vuejs/pinia/compare/pinia@2.0.27...pinia@2.0.28) (2022-12-09)
+
+### Bug Fixes
+
+- avoid missing injection not found warn in edge Vue 2 edge case ([#1849](https://github.com/vuejs/pinia/issues/1849)) ([78ec9a1](https://github.com/vuejs/pinia/commit/78ec9a186dcbce3d583db332ae22094a182358cc)), closes [#1650](https://github.com/vuejs/pinia/issues/1650)
+
+## [2.0.27](https://github.com/vuejs/pinia/compare/pinia@2.0.26...pinia@2.0.27) (2022-11-27)
+
+- api docs changes
+
+## [2.0.26](https://github.com/vuejs/pinia/compare/pinia@2.0.25...pinia@2.0.26) (2022-11-23)
+
+### Bug Fixes
+
+- **types:** support older ts versions ([78fb214](https://github.com/vuejs/pinia/commit/78fb21409b731f4822b076e83b31c234e75c722d)), closes [#1818](https://github.com/vuejs/pinia/issues/1818)
+
+## [2.0.25](https://github.com/vuejs/pinia/compare/pinia@2.0.24...pinia@2.0.25) (2022-11-21)
+
+### Bug Fixes
+
+- **types:** implemented a workaround to be TS 4.9.x compatible ([#1818](https://github.com/vuejs/pinia/issues/1818)) ([c42a54c](https://github.com/vuejs/pinia/commit/c42a54c5d6bf20ca4b1c619da44f18be3c84db87))
+
+## [2.0.24](https://github.com/vuejs/pinia/compare/pinia@2.0.23...pinia@2.0.24) (2022-11-17)
+
+## [2.0.23](https://github.com/vuejs/pinia/compare/pinia@2.0.22...pinia@2.0.23) (2022-10-08)
+
+### Bug Fixes
+
+- **devtools:** init `_customProperties` for devtools ([#1704](https://github.com/vuejs/pinia/issues/1704)) ([8c1dfce](https://github.com/vuejs/pinia/commit/8c1dfce2e67c37e09251a7b85fcae2d6a4030fb8))
+
+## [2.0.22](https://github.com/vuejs/pinia/compare/pinia@2.0.21...pinia@2.0.22) (2022-09-06)
+
+### Features
+
+- **ssr:** handle Maps and Sets ([f9843eb](https://github.com/vuejs/pinia/commit/f9843eb589ea9752f9021f9ebcfc49f6659350d2)), closes [#1608](https://github.com/vuejs/pinia/issues/1608)
+
 ## [2.0.21](https://github.com/vuejs/pinia/compare/pinia@2.0.20...pinia@2.0.21) (2022-08-26)
 
 ### Bug Fixes
@@ -315,7 +381,7 @@ This version supports Vue 2! [Here](https://github.com/vuejs/pinia-vue-2-vite-ex
 
 # [2.0.0-rc.1](https://github.com/vuejs/pinia/compare/v2.0.0-rc.0...v2.0.0-rc.1) (2021-07-30)
 
-Posted https://github.com/vuejs/pinia/issues/592 to help people installing or upgrading Pinia.
+Posted <https://github.com/vuejs/pinia/issues/592> to help people installing or upgrading Pinia.
 
 ### Bug Fixes
 
@@ -329,7 +395,7 @@ Posted https://github.com/vuejs/pinia/issues/592 to help people installing or up
 
 This release requires Vue 3.2.0, which is currently only available under the `beta` dist tag (`npm i vue@beta` or `yarn add vue@beta` + the corresponding packages like `@vue/compiler-sfc@beta`).
 
-Follow the instructions at https://github.com/vuejs/pinia/issues/592 if you need help updating your package versions.
+Follow the instructions at <https://github.com/vuejs/pinia/issues/592> if you need help updating your package versions.
 
 It contains major improvements:
 

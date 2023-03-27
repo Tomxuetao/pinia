@@ -18,6 +18,8 @@ export const useStore = defineStore('storeId', {
       count: 0,
       name: 'Eduardo',
       isAdmin: true,
+      items: [],
+      hasChanged: true,
     }
   },
 })
@@ -82,14 +84,32 @@ const store = useStore()
 store.count++
 ```
 
+Note you cannot add a new state property **if you don't define it in `state()`**, it must contain the initial state. e.g.: we can't do `store.secondCount = 2` if `secondCount` is not defined in `state()`.
+
 ## Resetting the state
 
-You can _reset_ the state to its initial value by calling the `$reset()` method on the store:
+In [Option Stores](/core-concepts/index.md#option-stores), you can _reset_ the state to its initial value by calling the `$reset()` method on the store:
 
 ```js
 const store = useStore()
 
 store.$reset()
+```
+
+Internally, this calls the `state()` function to create a new state object and replaces the current state with it.
+
+In [Setup Stores](/core-concepts/index.md#setup-stores), you need to create your own `$reset()` method:
+
+```ts
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+
+  function $reset() {
+    count.value = 0
+  }
+
+  return { count, $reset }
+})
 ```
 
 ### Usage with the Options API
@@ -182,7 +202,7 @@ store.$patch({
 However, some mutations are really hard or costly to apply with this syntax: any collection modification (e.g. pushing, removing, splicing an element from an array) requires you to create a new collection. Because of this, the `$patch` method also accepts a function to group this kind of mutations that are difficult to apply with a patch object:
 
 ```js
-cartStore.$patch((state) => {
+store.$patch((state) => {
   state.items.push({ name: 'shoes', quantity: 1 })
   state.hasChanged = true
 })
@@ -229,21 +249,17 @@ cartStore.$subscribe((mutation, state) => {
 
 By default, _state subscriptions_ are bound to the component where they are added (if the store is inside a component's `setup()`). Meaning, they will be automatically removed when the component is unmounted. If you also want to keep them after the component is unmounted, pass `{ detached: true }` as the second argument to _detach_ the _state subscription_ from the current component:
 
-```js
-export default {
-  setup() {
-    const someStore = useSomeStore()
+```vue
+<script setup>
+const someStore = useSomeStore()
 
-    // this subscription will be kept even after the component is unmounted
-    someStore.$subscribe(callback, { detached: true })
-
-    // ...
-  },
-}
+// this subscription will be kept even after the component is unmounted
+someStore.$subscribe(callback, { detached: true })
+</script>
 ```
 
 :::tip
-You can watch the whole state on the `pinia` instance:
+You can _watch_ the whole state on the `pinia` instance with a single `watch()`:
 
 ```js
 watch(

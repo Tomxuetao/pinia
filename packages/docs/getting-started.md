@@ -1,4 +1,9 @@
+# Getting Started
+
 ## Installation
+
+<VueMasteryLogoLink for="pinia-cheat-sheet">
+</VueMasteryLogoLink>
 
 Install `pinia` with your favorite package manager:
 

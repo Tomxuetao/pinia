@@ -38,7 +38,7 @@ export const useVideoPlayer = defineStore('video', () => {
   const videoElement = ref<HTMLVideoElement>()
   const src = ref('/data/video.mp4')
   const { playing, volume, currentTime, togglePictureInPicture } =
-    useMediaControls(video, { src })
+    useMediaControls(videoElement, { src })
 
   function loadVideo(element: HTMLVideoElement, src: string) {
     videoElement.value = element
@@ -91,7 +91,7 @@ export const useColorStore = defineStore('colors', () => {
   const lastColor = useLocalStorage('lastColor', sRGBHex)
   // ...
   return {
-    lastColor: skipHydrate(pickedColor), // Ref<string>
+    lastColor: skipHydrate(lastColor), // Ref<string>
     open, // Function
     isSupported, // boolean (not even reactive)
   }

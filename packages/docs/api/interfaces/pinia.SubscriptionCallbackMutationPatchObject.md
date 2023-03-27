@@ -1,7 +1,5 @@
 ---
-sidebar: "auto"
-editLinks: false
-sidebarDepth: 3
+editLink: false
 ---
 
 [API Documentation](../index.md) / [pinia](../modules/pinia.md) / SubscriptionCallbackMutationPatchObject
@@ -13,29 +11,35 @@ sidebarDepth: 3
 Context passed to a subscription callback when `store.$patch()` is called
 with an object.
 
-## Type parameters
+## Type parameters %{#Type-parameters}%
 
 | Name |
 | :------ |
 | `S` |
 
-## Hierarchy
+## Hierarchy %{#Hierarchy}%
 
 - [`_SubscriptionCallbackMutationBase`](pinia._SubscriptionCallbackMutationBase.md)
 
   ↳ **`SubscriptionCallbackMutationPatchObject`**
 
-## Properties
+## Properties %{#Properties}%
 
-### events
+### events %{#Properties-events}%
 
 • **events**: `DebuggerEvent`[]
 
-DEV ONLY. Array for patch calls.
+🔴 DEV ONLY, DO NOT use for production code. Different mutation calls. Comes from
+https://vuejs.org/guide/extras/reactivity-in-depth.html#reactivity-debugging and allows to track mutations in
+devtools and plugins **during development only**.
+
+#### Overrides %{#Properties-events-Overrides}%
+
+[_SubscriptionCallbackMutationBase](pinia._SubscriptionCallbackMutationBase.md).[events](pinia._SubscriptionCallbackMutationBase.md#events)
 
 ___
 
-### payload
+### payload %{#Properties-payload}%
 
 • **payload**: [`_DeepPartial`](../modules/pinia.md#_deeppartial)<`S`\>
 
@@ -43,24 +47,24 @@ Object passed to `store.$patch()`.
 
 ___
 
-### storeId
+### storeId %{#Properties-storeId}%
 
 • **storeId**: `string`
 
 `id` of the store doing the mutation.
 
-#### Inherited from
+#### Inherited from %{#Properties-storeId-Inherited-from}%
 
 [_SubscriptionCallbackMutationBase](pinia._SubscriptionCallbackMutationBase.md).[storeId](pinia._SubscriptionCallbackMutationBase.md#storeid)
 
 ___
 
-### type
+### type %{#Properties-type}%
 
 • **type**: [`patchObject`](../enums/pinia.MutationType.md#patchobject)
 
 Type of the mutation.
 
-#### Overrides
+#### Overrides %{#Properties-type-Overrides}%
 
 [_SubscriptionCallbackMutationBase](pinia._SubscriptionCallbackMutationBase.md).[type](pinia._SubscriptionCallbackMutationBase.md#type)

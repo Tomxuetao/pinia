@@ -1,7 +1,5 @@
 ---
-sidebar: "auto"
-editLinks: false
-sidebarDepth: 3
+editLink: false
 ---
 
 [API Documentation](../index.md) / [pinia](../modules/pinia.md) / \_SubscriptionCallbackMutationBase
@@ -12,7 +10,7 @@ sidebarDepth: 3
 
 Base type for the context passed to a subscription callback. Internal type.
 
-## Hierarchy
+## Hierarchy %{#Hierarchy}%
 
 - **`_SubscriptionCallbackMutationBase`**
 
@@ -22,9 +20,19 @@ Base type for the context passed to a subscription callback. Internal type.
 
   ↳ [`SubscriptionCallbackMutationPatchObject`](pinia.SubscriptionCallbackMutationPatchObject.md)
 
-## Properties
+## Properties %{#Properties}%
 
-### storeId
+### events %{#Properties-events}%
+
+• `Optional` **events**: `DebuggerEvent` \| `DebuggerEvent`[]
+
+🔴 DEV ONLY, DO NOT use for production code. Different mutation calls. Comes from
+https://vuejs.org/guide/extras/reactivity-in-depth.html#reactivity-debugging and allows to track mutations in
+devtools and plugins **during development only**.
+
+___
+
+### storeId %{#Properties-storeId}%
 
 • **storeId**: `string`
 
@@ -32,7 +40,7 @@ Base type for the context passed to a subscription callback. Internal type.
 
 ___
 
-### type
+### type %{#Properties-type}%
 
 • **type**: [`MutationType`](../enums/pinia.MutationType.md)
 
