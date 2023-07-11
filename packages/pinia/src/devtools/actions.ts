@@ -2,6 +2,12 @@ import { Pinia } from '../rootStore'
 import { saveAs } from './file-saver'
 import { toastMessage } from './utils'
 
+/**
+ * This file contain devtools actions, they are not Pinia actions.
+ */
+
+// ---
+
 export function checkClipboardAccess() {
   if (!('clipboard' in navigator)) {
     toastMessage(`Your browser doesn't support the Clipboard API`, 'error')
@@ -106,7 +112,7 @@ export async function actionGlobalOpenStateFile(pinia: Pinia) {
     toastMessage(`Global state imported from "${file.name}".`)
   } catch (error) {
     toastMessage(
-      `Failed to export the state as JSON. Check the console for more details.`,
+      `Failed to import the state from JSON. Check the console for more details.`,
       'error'
     )
     console.error(error)

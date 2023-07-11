@@ -43,7 +43,7 @@ ___
 
 • **$state**: `UnwrapRef`<`S`\> & [`PiniaCustomStateProperties`](pinia.PiniaCustomStateProperties.md)<`S`\>
 
-State of the Store. Setting it will replace the whole state.
+State of the Store. Setting it will internally call `$patch()` to update the state.
 
 ___
 
@@ -199,7 +199,7 @@ to an array. The function passed to `$patch()` **must be synchronous**.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `stateMutator` | `ReturnType`<`F`\> extends `Promise`<`any`\> ? `never` : `F` | function that mutates `state`, cannot be async |
+| `stateMutator` | `ReturnType`<`F`\> extends `Promise`<`any`\> ? `never` : `F` | function that mutates `state`, cannot be asynchronous |
 
 #### Returns %{#Methods-$patch-Returns_1}%
 

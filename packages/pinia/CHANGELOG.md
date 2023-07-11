@@ -1,3 +1,42 @@
+## [2.1.4](https://github.com/vuejs/pinia/compare/pinia@2.1.3...pinia@2.1.4) (2023-06-14)
+
+### Bug Fixes
+
+- **devtools:** group setup store sync actions mutations ([683efe1](https://github.com/vuejs/pinia/commit/683efe1a34cbca82c1ef19d268e3080503401de2))
+
+## [2.1.3](https://github.com/vuejs/pinia/compare/pinia@2.1.2...pinia@2.1.3) (2023-05-18)
+
+### Bug Fixes
+
+- **types:** revert declare module vue ([3000161](https://github.com/vuejs/pinia/commit/3000161205e66838d872e514a9e90f73a1b37039))
+
+## [2.1.2](https://github.com/vuejs/pinia/compare/pinia@2.1.1...pinia@2.1.2) (2023-05-18)
+
+- Force vue-demi version
+
+## [2.1.1](https://github.com/vuejs/pinia/compare/pinia@2.1.0...pinia@2.1.1) (2023-05-17)
+
+### Bug Fixes
+
+- expect Vue 3.3 ([b8fb165](https://github.com/vuejs/pinia/commit/b8fb1653211dbe6dc6aa3a8ac36185bf93bcfa25))
+
+# [2.1.0](https://github.com/vuejs/pinia/compare/pinia@2.0.36...pinia@2.1.0) (2023-05-17)
+
+‼️ This **requires** Vue 3.3 or latest vue-demi (for Vue 2)
+
+### Bug Fixes
+
+- **types:** use declare module vue ([b7f97dd](https://github.com/vuejs/pinia/commit/b7f97ddf160e999da7b639ba4fcaf554bed5f1e2))
+
+### Features
+
+- allow app injections in setup stores ([6a71019](https://github.com/vuejs/pinia/commit/6a71019ef2a633dcb097a63be895a8b1714863b6)), closes [#1784](https://github.com/vuejs/pinia/issues/1784)
+- **devtools:** allow resetting setup stores from inspector ([971dcdb](https://github.com/vuejs/pinia/commit/971dcdbf4b825e1791d02a85d6788fa72236107c)), closes [#2189](https://github.com/vuejs/pinia/issues/2189)
+
+### Reverts
+
+- Revert "chore: tmp upgrade to beta" ([2337130](https://github.com/vuejs/pinia/commit/2337130b0f11a3218a972555b84df6b2c055e6dc))
+
 ## [2.0.36](https://github.com/vuejs/pinia/compare/pinia@2.0.35...pinia@2.0.36) (2023-05-08)
 
 ### Features
