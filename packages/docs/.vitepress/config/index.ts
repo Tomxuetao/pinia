@@ -9,5 +9,15 @@ export default defineConfig({
   locales: {
     root: { label: 'English', lang: 'en-US', link: '/', ...enConfig },
     zh: { label: '简体中文', lang: 'zh-CN', link: '/zh/', ...zhConfig },
+    es: {
+      label: 'Español',
+      lang: 'es-ES',
+      link: 'https://es-pinia.vercel.app/',
+    },
+    ko: {
+      label: '한국어',
+      lang: 'ko-KR',
+      link: 'https://pinia.vuejs.kr/',
+    },
   },
 })
