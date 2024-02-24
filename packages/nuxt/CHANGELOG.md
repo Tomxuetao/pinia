@@ -1,3 +1,28 @@
+## [0.5.1](https://github.com/vuejs/pinia/compare/@pinia/nuxt@0.5.0...@pinia/nuxt@0.5.1) (2023-10-16)
+
+### Bug Fixes
+
+- **nuxt:** use srcDir by default for storesDirs ([dd90708](https://github.com/vuejs/pinia/commit/dd907089a688742d609bfd24c182cb7b6d6df375)), closes [#2447](https://github.com/vuejs/pinia/issues/2447)
+
+### Features
+
+- Add storeToRefs to the auto imports in @pinia/nuxt [#1876](https://github.com/vuejs/pinia/issues/1876) ([#2427](https://github.com/vuejs/pinia/issues/2427)) ([f19f368](https://github.com/vuejs/pinia/commit/f19f368a963be68940432bb0d4e0f5d74306c2d9))
+
+# [0.5.0](https://github.com/vuejs/pinia/compare/@pinia/nuxt@0.4.11...@pinia/nuxt@0.5.0) (2023-10-13)
+
+### Features
+
+- **imports:** add storesDirs auto import ([70a95ba](https://github.com/vuejs/pinia/commit/70a95ba9b1d6a55aeea72088dfedd478aa4db766)), closes [#1604](https://github.com/vuejs/pinia/issues/1604)
+
+### BREAKING CHANGES
+
+- **imports:** the option `autoImports` has been removed as it offered  
+  no value compared to the existing `imports` option in Nuxt. Instead, we
+  are automatically adding `defineStore()`, and `acceptHMRUpdate()` to the
+  list of auto imported functions. We are also adding the `./stores` dirs
+  to auto imports now, so if you were manually adding that option, it can
+  be removed.
+
 ## [0.4.11](https://github.com/vuejs/pinia/compare/@pinia/nuxt@0.4.10...@pinia/nuxt@0.4.11) (2023-05-17)
 
 This release only contains build related changes

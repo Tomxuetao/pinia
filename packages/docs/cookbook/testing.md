@@ -19,9 +19,9 @@ import { useCounterStore } from '../src/stores/counter'
 
 describe('Counter Store', () => {
   beforeEach(() => {
-    // creates a fresh pinia and make it active so it's automatically picked
-    // up by any useStore() call without having to pass it to it:
-    // `useStore(pinia)`
+    // creates a fresh pinia and makes it active
+    // so it's automatically picked up by any useStore() call
+    // without having to pass it to it: `useStore(pinia)`
     setActivePinia(createPinia())
   })
 
@@ -157,15 +157,28 @@ expect(store.someAction).toHaveBeenCalledTimes(1)
 
 ### Specifying the createSpy function
 
-When using Jest, or vitest with `globals: true`, `createTestingPinia` automatically stubs actions using the spy function based on the existing test framework (`jest.fn` or `vitest.fn`). If you are using a different framework, you'll need to provide a [createSpy](/api/interfaces/pinia_testing.TestingOptions.html#createspy) option:
+When using Jest, or vitest with `globals: true`, `createTestingPinia` automatically stubs actions using the spy function based on the existing test framework (`jest.fn` or `vitest.fn`). If you are not using `globals: true` or using a different framework, you'll need to provide a [createSpy](/api/interfaces/pinia_testing.TestingOptions.html#createspy) option:
 
-```js
+::: code-group
+
+```ts [vitest]
+// NOTE: not needed with `globals: true`
+import { vi } from 'vitest'
+
+createTestingPinia({
+  createSpy: vi.fn,
+})
+```
+
+```ts [sinon]
 import sinon from 'sinon'
 
 createTestingPinia({
-  createSpy: sinon.spy, // use sinon's spy to wrap actions
+  createSpy: sinon.spy,
 })
 ```
+
+:::
 
 You can find more examples in [the tests of the testing package](https://github.com/vuejs/pinia/blob/v2/packages/testing/src/testing.spec.ts).
 

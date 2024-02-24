@@ -4,7 +4,7 @@ editLink: false
 
 [API Documentation](../index.md) / [pinia](../modules/pinia.md) / SubscriptionCallbackMutationPatchObject
 
-# Interface: SubscriptionCallbackMutationPatchObject<S\>
+# Interface: SubscriptionCallbackMutationPatchObject\<S\>
 
 [pinia](../modules/pinia.md).SubscriptionCallbackMutationPatchObject
 
@@ -41,7 +41,7 @@ ___
 
 ### payload
 
-• **payload**: [`_DeepPartial`](../modules/pinia.md#_deeppartial)<`S`\>
+• **payload**: [`_DeepPartial`](../modules/pinia.md#_DeepPartial)\<`S`\>
 
 Object passed to `store.$patch()`.
 
@@ -55,13 +55,13 @@ ___
 
 #### Inherited from
 
-[_SubscriptionCallbackMutationBase](pinia._SubscriptionCallbackMutationBase.md).[storeId](pinia._SubscriptionCallbackMutationBase.md#storeid)
+[_SubscriptionCallbackMutationBase](pinia._SubscriptionCallbackMutationBase.md).[storeId](pinia._SubscriptionCallbackMutationBase.md#storeId)
 
 ___
 
 ### type
 
-• **type**: [`patchObject`](../enums/pinia.MutationType.md#patchobject)
+• **type**: [`patchObject`](../enums/pinia.MutationType.md#patchObject)
 
 Type of the mutation.
 

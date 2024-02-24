@@ -4,7 +4,7 @@ editLink: false
 
 [API Documentation](../index.md) / [pinia](../modules/pinia.md) / DefineStoreOptionsBase
 
-# Interface: DefineStoreOptionsBase<S, Store\>
+# Interface: DefineStoreOptionsBase\<S, Store\>
 
 [pinia](../modules/pinia.md).DefineStoreOptionsBase
 
@@ -16,7 +16,7 @@ of stores.
 
 | Name | Type |
 | :------ | :------ |
-| `S` | extends [`StateTree`](../modules/pinia.md#statetree) |
+| `S` | extends [`StateTree`](../modules/pinia.md#StateTree) |
 | `Store` | `Store` |
 
 ## Hierarchy

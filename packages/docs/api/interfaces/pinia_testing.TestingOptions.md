@@ -14,6 +14,10 @@ editLink: false
 
 • `Optional` **createSpy**: (`fn?`: (...`args`: `any`[]) => `any`) => (...`args`: `any`[]) => `any`
 
+Function used to create a spy for actions and `$patch()`. Pre-configured
+with `jest.fn` in Jest projects or `vi.fn` in Vitest projects if
+`globals: true` is set.
+
 #### Type declaration
 
 ▸ (`fn?`): (...`args`: `any`[]) => `any`
@@ -59,7 +63,7 @@ ___
 
 ### initialState
 
-• `Optional` **initialState**: [`StateTree`](../modules/pinia.md#statetree)
+• `Optional` **initialState**: [`StateTree`](../modules/pinia.md#StateTree)
 
 Allows defining a partial initial state of all your stores. This state gets applied after a store is created,
 allowing you to only set a few properties that are required in your test.

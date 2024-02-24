@@ -68,9 +68,9 @@ In _Setup Stores_:
 - `computed()`s become `getters`
 - `function()`s become `actions`
 
-Note you **must** return **all state properties** in setup stores for pinia to pick them up as state. In other words, you cannot have _private_ state properties in stores.
+Note you **must** return **all state properties** in setup stores for pinia to pick them up as state. In other words, you cannot have _private_ state properties in stores. Not returning all state properties can break SSR, devtools, and other plugins.
 
-Setup stores bring a lot more flexibility than [Option Stores](#option-stores) as you can create watchers within a store and freely use any [composable](https://vuejs.org/guide/reusability/composables.html#composables). However, keep in mind that using composables will get more complex when using [SSR](../cookbook/composables.md).
+Setup stores bring a lot more flexibility than [Option Stores](#Option-Stores) as you can create watchers within a store and freely use any [composable](https://vuejs.org/guide/reusability/composables.html#composables). However, keep in mind that using composables will get more complex when using [SSR](../cookbook/composables.md).
 
 Setup stores are also able to rely on globally _provided_ properties like the Router or the Route. Any property [provided at the App level](https://vuejs.org/api/application.html#app-provide) can be accessed from the store using `inject()`, just like in components:
 
@@ -92,7 +92,7 @@ export const useSearchFilters = defineStore('search-filters', () => {
 ```
 
 :::warning
-Do not return properties like `useRoute()` or `appProvided` (from the example above) as they do not belong to the store itself and you can directly access them within components with `useRoute()` and `inject('appProvided')`.
+Do not return properties like `route` or `appProvided` (from the example above) as they do not belong to the store itself and you can directly access them within components with `useRoute()` and `inject('appProvided')`.
 :::
 
 ## What syntax should I pick?
@@ -124,6 +124,7 @@ Note that `store` is an object wrapped with `reactive`, meaning there is no need
 
 ```vue
 <script setup>
+import { useCounterStore } from '@/stores/counter'
 const store = useCounterStore()
 // ❌ This won't work because it breaks reactivity
 // it's the same as destructuring from `props`
@@ -147,6 +148,7 @@ In order to extract properties from the store while keeping its reactivity, you 
 
 ```vue
 <script setup>
+import { useCounterStore } from '@/stores/counter'
 import { storeToRefs } from 'pinia'
 
 const store = useCounterStore()

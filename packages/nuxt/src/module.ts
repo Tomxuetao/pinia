@@ -26,7 +26,7 @@ export interface ModuleOptions {
    * directly adding the dirs to the `imports.dirs` option. If you want to
    * also import nested stores, you can use the glob pattern `./stores/**`
    *
-   * @default `['./stores']`
+   * @default `['stores']`
    */
   storesDirs?: string[]
 }
@@ -42,20 +42,18 @@ const module: NuxtModule<ModuleOptions> = defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     disableVuex: true,
-    storesDirs: ['./stores'],
   },
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
     // Disable default Vuex store (Nuxt v2.10+ only)
     if (
-      // @ts-expect-error: no feature flag anymore or private?
       nuxt.options.features &&
       // ts
       options.disableVuex &&
       isNuxt2()
     ) {
-      // @ts-expect-error: same
+      // @ts-expect-error: no `store` feature flag in nuxt v3
       nuxt.options.features.store = false
     }
 
@@ -90,7 +88,13 @@ const module: NuxtModule<ModuleOptions> = defineNuxtModule<ModuleOptions>({
       { from: composables, name: 'defineStore' },
       { from: composables, name: 'acceptHMRUpdate' },
       { from: composables, name: 'usePinia' },
+      { from: composables, name: 'storeToRefs' },
     ])
+
+    if (!options.storesDirs) {
+      // resolve it against the src dir which is the root by default
+      options.storesDirs = [resolver.resolve(nuxt.options.srcDir, 'stores')]
+    }
 
     if (options.storesDirs) {
       for (const storeDir of options.storesDirs) {

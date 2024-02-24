@@ -4,11 +4,11 @@ editLink: false
 
 [API Documentation](../index.md) / [pinia](../modules/pinia.md) / \_StoreOnActionListenerContext
 
-# Interface: \_StoreOnActionListenerContext<Store, ActionName, A\>
+# Interface: \_StoreOnActionListenerContext\<Store, ActionName, A\>
 
 [pinia](../modules/pinia.md)._StoreOnActionListenerContext
 
-Actual type for [StoreOnActionListenerContext](../modules/pinia.md#storeonactionlistenercontext). Exists for refactoring
+Actual type for [StoreOnActionListenerContext](../modules/pinia.md#StoreOnActionListenerContext). Exists for refactoring
 purposes. For internal use only.
 For internal use **only**
 
@@ -24,7 +24,10 @@ For internal use **only**
 
 ### after
 
-• **after**: (`callback`: `A` extends `Record`<`ActionName`, [`_Method`](../modules/pinia.md#_method)\> ? (`resolvedReturn`: [`_Awaited`](../modules/pinia.md#_awaited)<`ReturnType`<`A`[`ActionName`]\>\>) => `void` : () => `void`) => `void`
+• **after**: (`callback`: `A` extends `Record`\<`ActionName`, [`_Method`](../modules/pinia.md#_Method)\> ? (`resolvedReturn`: [`_Awaited`](../modules/pinia.md#_Awaited)\<`ReturnType`\<`A`[`ActionName`]\>\>) => `void` : () => `void`) => `void`
+
+Sets up a hook once the action is finished. It receives the return value
+of the action, if it's a Promise, it will be unwrapped.
 
 #### Type declaration
 
@@ -37,7 +40,7 @@ of the action, if it's a Promise, it will be unwrapped.
 
 | Name | Type |
 | :------ | :------ |
-| `callback` | `A` extends `Record`<`ActionName`, [`_Method`](../modules/pinia.md#_method)\> ? (`resolvedReturn`: [`_Awaited`](../modules/pinia.md#_awaited)<`ReturnType`<`A`[`ActionName`]\>\>) => `void` : () => `void` |
+| `callback` | `A` extends `Record`\<`ActionName`, [`_Method`](../modules/pinia.md#_Method)\> ? (`resolvedReturn`: [`_Awaited`](../modules/pinia.md#_Awaited)\<`ReturnType`\<`A`[`ActionName`]\>\>) => `void` : () => `void` |
 
 ##### Returns
 
@@ -47,7 +50,7 @@ ___
 
 ### args
 
-• **args**: `A` extends `Record`<`ActionName`, [`_Method`](../modules/pinia.md#_method)\> ? `Parameters`<`A`[`ActionName`]\> : `unknown`[]
+• **args**: `A` extends `Record`\<`ActionName`, [`_Method`](../modules/pinia.md#_Method)\> ? `Parameters`\<`A`[`ActionName`]\> : `unknown`[]
 
 Parameters passed to the action
 
@@ -64,6 +67,9 @@ ___
 ### onError
 
 • **onError**: (`callback`: (`error`: `unknown`) => `void`) => `void`
+
+Sets up a hook if the action fails. Return `false` to catch the error and
+stop it from propagating.
 
 #### Type declaration
 

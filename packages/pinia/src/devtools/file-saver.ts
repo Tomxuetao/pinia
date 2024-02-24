@@ -15,12 +15,12 @@ const _global = /*#__PURE__*/ (() =>
   typeof window === 'object' && window.window === window
     ? window
     : typeof self === 'object' && self.self === self
-    ? self
-    : typeof global === 'object' && global.global === global
-    ? global
-    : typeof globalThis === 'object'
-    ? globalThis
-    : { HTMLElement: null })()
+      ? self
+      : typeof global === 'object' && global.global === global
+        ? global
+        : typeof globalThis === 'object'
+          ? globalThis
+          : { HTMLElement: null })()
 
 export interface Options {
   autoBom?: boolean
@@ -90,8 +90,7 @@ function click(node: Element) {
   }
 }
 
-const _navigator =
-  /*#__PURE__*/ typeof navigator === 'object' ? navigator : { userAgent: '' }
+const _navigator = typeof navigator === 'object' ? navigator : { userAgent: '' }
 
 // Detect WebView inside a native macOS app by ruling out all browsers
 // We just need to check for 'Safari' because all other browsers (besides Firefox) include that too
@@ -113,15 +112,15 @@ export type SaveAs =
 export const saveAs: SaveAs = !IS_CLIENT
   ? () => {} // noop
   : // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView or mini program
-  typeof HTMLAnchorElement !== 'undefined' &&
-    'download' in HTMLAnchorElement.prototype &&
-    !isMacOSWebView
-  ? downloadSaveAs
-  : // Use msSaveOrOpenBlob as a second approach
-  'msSaveOrOpenBlob' in _navigator
-  ? msSaveAs
-  : // Fallback to using FileReader and a popup
-    fileSaverSaveAs
+    typeof HTMLAnchorElement !== 'undefined' &&
+      'download' in HTMLAnchorElement.prototype &&
+      !isMacOSWebView
+    ? downloadSaveAs
+    : // Use msSaveOrOpenBlob as a second approach
+      'msSaveOrOpenBlob' in _navigator
+      ? msSaveAs
+      : // Fallback to using FileReader and a popup
+        fileSaverSaveAs
 
 function downloadSaveAs(blob: Blob, name: string = 'download', opts?: Options) {
   const a = document.createElement('a')

@@ -5,7 +5,7 @@
   title="Learn all about actions in Pinia"
 />
 
-Actions are the equivalent of [methods](https://v3.vuejs.org/guide/data-methods.html#methods) in components. They can be defined with the `actions` property in `defineStore()` and **they are perfect to define business logic**:
+Actions are the equivalent of [methods](https://vuejs.org/api/options-state.html#methods) in components. They can be defined with the `actions` property in `defineStore()` and **they are perfect to define business logic**:
 
 ```js
 export const useCounterStore = defineStore('counter', {
@@ -54,7 +54,7 @@ export const useUsers = defineStore('users', {
 
 You are also completely free to set whatever arguments you want and return anything. When calling actions, everything will be automatically inferred!
 
-Actions are invoked like function or regular methods:
+Actions are invoked like regular functions and methods:
 
 ```vue
 <script setup>
@@ -166,7 +166,7 @@ export default {
 
 ## Subscribing to actions
 
-It is possible to observe actions and their outcome with `store.$onAction()`. The callback passed to it is executed before the action itself. `after` handles promises and allows you to execute a function after the action resolves. In a similar way, `onError` allows you to execute a function if the action throws or rejects. These are useful for tracking errors at runtime, similar to [this tip in the Vue docs](https://v3.vuejs.org/guide/tooling/deployment.html#tracking-runtime-errors).
+It is possible to observe actions and their outcome with `store.$onAction()`. The callback passed to it is executed before the action itself. `after` handles promises and allows you to execute a function after the action resolves. In a similar way, `onError` allows you to execute a function if the action throws or rejects. These are useful for tracking errors at runtime, similar to [this tip in the Vue docs](https://vuejs.org/guide/best-practices/production-deployment#tracking-runtime-errors).
 
 Here is an example that logs before running actions and after they resolve/reject.
 
