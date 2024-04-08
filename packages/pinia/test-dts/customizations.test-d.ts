@@ -121,13 +121,16 @@ expectType<{
 pinia.use(({ options, store }) => {
   const { debounce: debounceOptions } = options
   if (debounceOptions) {
-    return Object.keys(debounceOptions).reduce((debouncedActions, action) => {
-      debouncedActions[action] = debounce(
-        store[action],
-        debounceOptions[action]
-      )
-      return debouncedActions
-    }, {} as Record<string, (...args: any[]) => any>)
+    return Object.keys(debounceOptions).reduce(
+      (debouncedActions, action) => {
+        debouncedActions[action] = debounce(
+          store[action],
+          debounceOptions[action]
+        )
+        return debouncedActions
+      },
+      {} as Record<string, (...args: any[]) => any>
+    )
   }
 })
 
@@ -185,7 +188,7 @@ expectType<{
       const double = computed(() => n.value * 2)
       return {
         n,
-        double
+        double,
       }
     })()
   )
