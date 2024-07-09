@@ -1,16 +1,30 @@
 # Introduction
 
-<VueSchoolLink
+<!-- <VueSchoolLink
   href="https://vueschool.io/lessons/introduction-to-pinia"
   title="Get started with Pinia"
+/> -->
+
+<MasteringPiniaLink
+  href="https://play.gumlet.io/embed/651ecf274c2f339c6860e36b"
+  mp-link="https://masteringpinia.com/lessons/the-what-and-why-of-state-management-and-stores"
+  title="Create your own Pinia from scratch"
 />
 
 Pinia [started](https://github.com/vuejs/pinia/commit/06aeef54e2cad66696063c62829dac74e15fd19e) as an experiment to redesign what a Store for Vue could look like with the [Composition API](https://github.com/vuejs/composition-api) around November 2019. Since then, the initial principles have remained the same, but Pinia works for both Vue 2 and Vue 3 **and doesn't require you to use the composition API**. The API is the same for both except for _installation_ and _SSR_, and these docs are targeted to Vue 3 **with notes about Vue 2** whenever necessary so it can be read by Vue 2 and Vue 3 users!
 
 ## Why should I use Pinia?
 
+<!--
+https://masteringpinia.com/lessons/why-use-pinia
+ -->
+
 Pinia is a store library for Vue, it allows you to share a state across components/pages. If you are familiar with the Composition API, you might be thinking you can already share a global state with a simple `export const state = reactive({})`. This is true for single page applications but **exposes your application to [security vulnerabilities](https://vuejs.org/guide/scaling-up/ssr.html#cross-request-state-pollution)** if it is server side rendered. But even in small single page applications, you get a lot from using Pinia:
 
+- Testing utilities
+- Plugins: extend Pinia features with plugins
+- Proper TypeScript support or **autocompletion** for JS users
+- Server Side Rendering Support
 - Devtools support
   - A timeline to track actions, mutations
   - Stores appear in components where they are used
@@ -18,9 +32,8 @@ Pinia is a store library for Vue, it allows you to share a state across componen
 - Hot module replacement
   - Modify your stores without reloading your page
   - Keep any existing state while developing
-- Plugins: extend Pinia features with plugins
-- Proper TypeScript support or **autocompletion** for JS users
-- Server Side Rendering Support
+
+If you still have doubts, check out [the **official** Mastering Pinia course](https://masteringpinia.com). In the begining we cover how to build our own `defineStore()` function and then we move to the official Pinia API.
 
 <VueMasteryLogoLink for="pinia-cheat-sheet">
 </VueMasteryLogoLink>
@@ -123,6 +136,10 @@ export default defineComponent({
 [Try it in the Playground](https://play.pinia.vuejs.org/#eNqdVcFy0zAQ/RWNL0lpIrUUesikmRTooRyAoXDCHBxrm6i1JY8kp5nJ+N9ZS7bsOIFhekmk1b7dt0/a9T66LQq6LSGaRXOTalHYRSxFXihtyZ5weBQSPircS5CWVORRq5yMEDDqueVJ8WCVBjPxy8SCW92mVihpAqwQUiR9YGkweCktaIcPjpSl3kyfzMD/pzl2RnPjGUvYOV9knpSZ++9XMN7HkpAUt6UFPiNuSwhjRNkN6HBCCq0K0FaACR6U0rBeiy0YkqQpGEOsInYjDG04e3aJ5N5ak3MmD8YoQa7xoP7JQYFnk0E6DQk/mbNLxlW5ygaZ8DaOE/0aOeRoQkYeM/rt81XuNwe7Udz0BTpZspCphrwW9qyftLn4U2kDop+wQvSchfeHGwt5kSFz3BEy52K7cIGQ0B4vqQvZCFBVc1Y7Be9Prijn7us7dFmV1ipJlmkm0uebOAqs4mhx367nzLshZM4CoWgS+fc4xULx1SmJveNkwjDuwMRREC6O3KOvLXHE3JqCyacrrV78q42j5p7jaIl9xThsrVKZmSaF8LCNtYWZMZZyif4cMrHVVIJlssjZEWZ5Td/TS5aJFcNETEgOu8M0iJhyyP8neuu6vKCX7+i1i7q9aoLmdVR3hXiDKIs1qZKPYj0Qpe4pkYH+WrhHcSBOkmXq5bOzWV1CoJhuIH0+YX8yO8/6G7YP6C30yrKJXgNeYH189/AFdrgOh7niJTbGvw6/g1FZWXP0bh9KyZF2z8+xvXd3LOT6h7nbWZCmLaom2nWQk7meO38rvaN7Ra96KnaTDyUcTOLDwdeO0zD0UH5jj4bqTR889n0PGjvfUTH1fJiR8Rm5WZBx01wzckEq357IEb27SeC7CQEO6FBu1TTiG/K2N0YSPwcCuDcuWhPpzbHzc2/z4HYwoCbNgH+9IN1XY6BGHbmVop3xLmn1B2TmaJo=)
 
 You will find more information about each _map helper_ in the core concepts.
+
+## Official Course
+
+The official course for Pinia is [Mastering Pinia](https://masteringpinia.com). Written by Pinia's author, it covers everything from the basics to advanced topics like plugins, testing, and server-side rendering. It is the best way to get started with Pinia and to master it.
 
 ## Why _Pinia_
 
