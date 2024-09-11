@@ -57,6 +57,14 @@ object to define new names for the actions
 
 [`_MapActionsObjectReturn`](../type-aliases/MapActionsObjectReturn.md)\<`A`, `KeyMapper`\>
 
+### Param
+
+store to map from
+
+### Param
+
+array or object
+
 ### Example
 
 ```js
@@ -64,11 +72,11 @@ export default {
   methods: {
     // other methods properties
     // useCounterStore has two actions named `increment` and `setCount`
-    ...mapActions(useCounterStore, { moar: 'increment', setIt: 'setCount' })
+    ...mapActions(useCounterStore, { more: 'increment', setIt: 'setCount' })
   },
 
   created() {
-    this.moar()
+    this.more()
     this.setIt(2)
   }
 }
@@ -105,6 +113,14 @@ array of action names to map
 ### Returns
 
 [`_MapActionsReturn`](../type-aliases/MapActionsReturn.md)\<`A`\>
+
+### Param
+
+store to map from
+
+### Param
+
+array or object
 
 ### Example
 

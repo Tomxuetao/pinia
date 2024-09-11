@@ -22,6 +22,7 @@ let {
   skipCleanCheck: skipCleanGitCheck,
   noDepsUpdate,
   noPublish,
+  noLockUpdate,
 } = args
 
 if (args.h || args.help) {
@@ -37,6 +38,7 @@ Flags:
   --skipCleanCheck    Skip checking if the git repo is clean
   --noDepsUpdate      Skip updating dependencies in package.json files
   --noPublish         Skip publishing packages
+  --noLockUpdate      Skips updating the lock with "pnpm install"
 `.trim()
   )
   process.exit(0)
@@ -183,6 +185,13 @@ async function main() {
     })
   )
 
+  // TODO: we need to reorder packages based on dependencies
+  // pinia needs to be first
+  const piniaPkgIndx = packagesToRelease.find(({ name }) => name === 'pinia')
+  if (piniaPkgIndx > 0) {
+    packagesToRelease.unshift(packagesToRelease.splice(piniaPkgIndx, 1)[0])
+  }
+
   const { yes: isReleaseConfirmed } = await prompt({
     type: 'confirm',
     name: 'yes',
@@ -201,8 +210,10 @@ async function main() {
   step('\nUpdating versions in package.json files...')
   await updateVersions(pkgWithVersions)
 
-  step('\nUpdating lock...')
-  await runIfNotDry(`pnpm`, ['install'])
+  if (!noLockUpdate) {
+    step('\nUpdating lock...')
+    await runIfNotDry(`pnpm`, ['install'])
+  }
 
   step('\nGenerating changelogs...')
   for (const pkg of pkgWithVersions) {
@@ -313,12 +324,21 @@ function updateDeps(pkg, depType, updatedPackages) {
     const updatedDep = updatedPackages.find((pkg) => pkg.name === dep)
     // avoid updated peer deps that are external like @vue/devtools-api
     if (dep && updatedDep) {
-      console.log(
-        chalk.yellow(
-          `${pkg.name} -> ${depType} -> ${dep}@~${updatedDep.version}`
+      // skip any workspace reference, pnpm will handle it
+      if (deps[dep].startsWith('workspace:')) {
+        console.log(
+          chalk.yellow.dim(
+            `${pkg.name} -> ${depType} -> ${dep}@${deps[dep]} (skipped)`
+          )
         )
-      )
-      deps[dep] = '>=' + updatedDep.version
+      } else {
+        console.log(
+          chalk.yellow(
+            `${pkg.name} -> ${depType} -> ${dep}@>=${updatedDep.version}`
+          )
+        )
+        deps[dep] = '>=' + updatedDep.version
+      }
     }
   })
 }
