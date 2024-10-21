@@ -1,6 +1,7 @@
 import { describe, beforeEach, it, expect } from 'vitest'
 import { computed, reactive, ref, ToRefs } from 'vue'
 import { createPinia, defineStore, setActivePinia, storeToRefs } from '../src'
+import { set } from 'vue-demi'
 
 describe('storeToRefs', () => {
   beforeEach(() => {
@@ -149,6 +150,44 @@ describe('storeToRefs', () => {
         })()
       )
     ).toEqual(objectOfRefs({ n: 0, pluginN: 20 }))
+  })
+
+  it('preserve setters in getters', () => {
+    const useStore = defineStore('main', () => {
+      const n = ref(0)
+      const double = computed({
+        get() {
+          return n.value * 2
+        },
+        set(value: string | number) {
+          n.value =
+            (typeof value === 'string' ? parseInt(value) || 0 : value) / 2
+        },
+      })
+      return { n, double }
+    })
+    const refs = storeToRefs(useStore())
+    refs.double.value = 4
+    expect(refs.n.value).toBe(2)
+  })
+
+  it('keep reactivity', () => {
+    const store = defineStore('a', () => {
+      const n = ref(0)
+      const double = computed(() => n.value * 2)
+      return { n, double }
+    })()
+
+    const { double } = storeToRefs(store)
+
+    // Assuming HMR operation
+    set(
+      store,
+      'double',
+      computed(() => 1)
+    )
+
+    expect(double.value).toEqual(1)
   })
 
   tds(() => {
